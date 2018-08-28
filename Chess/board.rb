@@ -29,39 +29,38 @@ class Board
     # end
   end
   
-  def get_base_move(start_pos,ending_pos)
-    path = []
+  def get_base_move(start_pos, ending_pos)
     x_dif = ending_pos[0] - start_pos[0]
     y_dif = ending_pos[1] - start_pos[1]
-    
-    difs = [x_dif, y_dif]
+
     start_piece = @grid[start_pos[0]][start_pos[1]]
     base_moves = start_piece.base_moves
+    possible_base_moves = []
+    
+    # base_moves.each do |move|
+    #   possible_base_moves << [move[0]+last_move[0],move[1]+last_move[1]]
+    # end
     
     correct_move = base_moves.select do |move|
       x_mov = x_dif * move[0]
       y_mov = y_dif * move[1]
       x_mov >= 0 && y_mov >= 0 && x_mov + y_mov > 0
     end
-    
-    correct_move
-    
+    #
+    correct_move.first
   end
   
-  
-  
-  
-  
-  # def move_to(piece,pos)
-  # end
-  
-  
-  
-  
-  
-  
-  
-  
+  def get_path(start_pos,ending_pos)
+    path = []
+    base_move = get_base_move(start_pos,ending_pos)
+    path << base_move
+    
+    until path.last == ending_pos
+      path << [path.last[0] + base_move[0], path.last[1] + base_move[1]]
+      p path
+    end
+    path
+  end
   
   # def [](pos)
   #   row,col = pos
