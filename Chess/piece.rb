@@ -1,11 +1,11 @@
 require 'singleton'
 
 class Piece
-  attr_accessor :pos, :base_moves
-  attr_reader :color, :moves
+  attr_accessor :pos, :base_moves, :moves
+  attr_reader :color
+  
   def initialize(color)
     @color = color
-    #@pos = pos
   end
   
   def possible_moves(pos)
@@ -17,17 +17,7 @@ class Piece
   end
   
   def generate_moves
-    up, down, left, right = [], [], [], []
-    
-    i = 0
-    while i < 7
-      up << [i+1,0]
-      down << [-(i+1),0]
-      left << [0,-(i+1)]
-      right << [0,i+1]
-      i+=1
-    end
-    up + down + left + right
+    []
   end
   
   # def inspect
