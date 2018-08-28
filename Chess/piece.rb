@@ -20,6 +20,7 @@ class Piece
     []
   end
   
+  
   # def inspect
   #   puts "#{self.color} #{self.class.name}"
   # end
@@ -32,6 +33,14 @@ class Knight < Piece
     @moves = [[1,2],[1,-2],[2,-1],[2,1],[-1,2],[-1,-2],[-2,1],[-2,-1]]
     @base_moves = moves
   end
+  
+  def symbol
+    if @color == 'green'
+      "♘"	
+    else
+      "♞"
+    end
+  end
 end
 
 class Pawn < Piece
@@ -43,6 +52,14 @@ class Pawn < Piece
       @base_moves = [[0, -1], [-1, 0],[-1,-1], [-1,1], [-2, 0]]      
     end
     @moves = @base_moves
+  end
+  
+  def symbol
+    if @color == 'green'
+      "♙"	
+    else
+      "♟"
+    end
   end
 end
 
@@ -69,6 +86,14 @@ class Bishop < Piece
     up_left + down_left + up_right + down_right
   end
   
+  def symbol
+    if @color == 'green'
+      "♗"
+    else
+      "♝"
+    end
+  end
+  
 end
 
 class Rook < Piece
@@ -91,6 +116,14 @@ class Rook < Piece
     end
     up + down + left + right
   end
+  
+  def symbol
+    if @color == 'green'
+      "♖"
+    else
+      "♜"
+    end
+  end
 
 end
 
@@ -100,6 +133,14 @@ class King < Piece
     @base_moves = [[0, 1], [0, -1], [1, 0], [-1, 0],
                   [1,1],[-1,-1],[1,-1],[-1,1]]
     @moves = @base_moves
+  end
+  
+  def symbol
+    if @color == 'green'
+      "♔"
+    else
+      "♚"
+    end
   end
 end
 
@@ -129,6 +170,14 @@ class Queen < Piece
     end
     up + down + left + right + up_left + down_left + up_right + down_right
   end
+  def symbol
+    if @color == 'green'
+      "♕"	
+    else
+      "♛"
+    end
+  end
+  
   
 end
 
@@ -136,5 +185,8 @@ end
 class NullPiece < Piece
   include Singleton
   def initialize
+  end
+  def symbol
+    " "
   end
 end
