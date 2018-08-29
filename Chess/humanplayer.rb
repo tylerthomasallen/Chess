@@ -1,14 +1,9 @@
 require_relative "cursor"
 class HumanPlayer
-  attr_reader :name
-  
-  def initialize(name)
+  attr_reader :name, :color
+
+  def initialize(name, color)
     @name = name
-    @cursor = Cursor.new([0,0],)
-  end
-  
-  def make_move(something)
-    curser.obj.get_input
-    return pos
+    @color = color
   end
 end
